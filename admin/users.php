@@ -1,8 +1,8 @@
 <?php
-require('connect.php');
+
+
 session_start();
 $user=$_SESSION['user'];
-
 
 ?>
 <!DOCTYPE html>
@@ -71,7 +71,7 @@ $user=$_SESSION['user'];
                        <p>Dashboard v1</p>
                      </a>
                    </li>
-       </ul>
+</ul>
                <li class="nav-item has-treeview menu-open">
                  <a href="#" class="nav-link active">
                    <i class="nav-icon fas fa-table"></i>
@@ -101,42 +101,17 @@ $user=$_SESSION['user'];
                        <p>Generalised transcript</p>
                      </a>
                    </li>
-                   <li class="nav-item">
-                      <a href="users.php" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Users</p>
-                      </a>
-                    </li>
                  </ul>
-       <!-- /.sidebar-menu -->
-
-     </nav>
       <!-- /.sidebar-menu -->
-    </div>
+
+  </nav>
     <!-- /.sidebar -->
   </aside>
 
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <div class="content-header">
 
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <div class="col-md-10"></div>
-
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard </li>
-              <li class="breadcrumb-item active">users</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -146,18 +121,18 @@ $user=$_SESSION['user'];
             <!-- /.card -->
 
             <div class="card">
-              <div class="card-header">
+              <div class="card-header"><div class="row">
+                       <div class="col-md-10"></div>
+                       <div class="col-md-2">
+                        <button type='button' class='btn btn-warning dropdown-toggle' data-toggle='dropdown'>Action</button>
 
-                <div class="row"> <div class="col-md-10"></div>
-                <div class="col-md-2">
-                  <button type='button' class='btn btn-success dropdown-toggle' data-toggle='dropdown'>Action</button>
+                    <ul class='dropdown-menu'>
+                      <li class='dropdown-item'><button type='button' class='btn btn-secondary' data-toggle='modal' data-target="#ADD">
+                      ADD USER
+                        </button></li>
 
-                 <ul class='dropdown-menu'>
-                 <li class='dropdown-item'><button type='button' class='btn btn-secondary' data-toggle='modal' data-target="#ADD">
-                 ADD USER
-                  </button></li>
-
-                </div>
+                    </ul></div>
+                      </div>
                 <h2 class="card-title">Students Table</h2>
               </div>
               <!-- /.card-header -->
@@ -166,42 +141,50 @@ $user=$_SESSION['user'];
                   <thead>
                   <tr>
 
-                    <th>USERS</th>
-                    <th>HOST</th>
-  <th>ACTION</th>
-
-                  </tr>
+                    <th>USERNAME</th>
+                    <th>ACTION</th>
+                                    </tr>
                   </thead>
                   <tbody>
-                    <?php
+                  <?php
 
-                    $connem= mysqli_connect('localhost','root','','mysql') or die('Unable to Connect to Database');
-                    $strSQLc= "SELECT * FROM user";
-                    $query = mysqli_query($connem,$strSQLc);
-                    if(mysqli_num_rows($query) > 0){
-                    while ($row=mysqli_fetch_array($query))
-                    {
-                    $hostme=$row['Host'];
-                    $name=$row['User'];
+$connem= mysqli_connect('localhost','root','','mysql') or die('Unable to Connect to Database');
+$strSQLc= "SELECT User FROM user";
+     $query = mysqli_query($connem,$strSQLc);
+     if(mysqli_num_rows($query) > 0){
+while ($row=mysqli_fetch_array($query))
+{
+
+$name=$row['User'];
+
+echo "
+<tr>
+<td>$name</td>
+<td> <button type='button' class='btn btn-warning dropdown-toggle' data-toggle='dropdown'>Action</button>
+<ul class='dropdown-menu'>
 
 
-                    echo "
-                    <tr>
-                    <td>$name</td>
-                    <td>$hostme</td>
-                    <td> <button type='button' class='btn btn-success dropdown-toggle' data-toggle='dropdown'>Action</button>
-                    <ul class='dropdown-menu'>
-                    <li class='dropdown-item delete_movie'><a href='delete.php?id=$name&sec=$hostme'><button type='button' class='btn btn-default'>Delete</button></a></li>
-                    </ul>
-                    </div></td>
-                    </tr>";
-                    }
-                    }
-                    ?>
-                          <th>USERS</th>
-                          <th>HOST</th>
-                            <th>ACTION</th>
+  <li class='dropdown-item delete_movie'><a href=''><button type='button' class='btn btn-default'>Delete</button></a></li>
+</ul>
+ </div></td>
+</tr>";
 
+}
+
+
+
+
+                   }
+                 ?>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+
+                    <th>USERNAME</th>
+
+
+                    <th>ACTION</th>
+                  </tr>
                   </tfoot>
                 </table>
               </div>
@@ -214,89 +197,162 @@ $user=$_SESSION['user'];
         <!-- /.row -->
       </div>
 
-                      <div class="modal fade" id="ADD">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title">ADD STUDENT</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <form action="adduser.php" method="post">
-                                <div class="input-group mb-3">
-                                  <input type="text" class="form-control" placeholder="username" name="user">
-                                  <div class="input-group-append">
-                                    <div class="input-group-text">
-                                      <span class="fas fa-user"></span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="modal-body">
-
-                                    <div class="input-group mb-3">
-                                      <input type="text" class="form-control" placeholder="host" name="host">
-                                      <div class="input-group-append">
-                                        <div class="input-group-text">
-                                          <span class="fas fa-user"></span>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                      <input type="password" class="form-control" placeholder="password" name="password">
-                                      <div class="input-group-append">
-                                        <div class="input-group-text">
-                                          <span class="fas fa-user"></span>
-                                        </div>
-                                      </div>
-                                    </div>
+      <div class="modal fade" id="ADD">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">ADD STUDENT</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="" method="post">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Name">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>
 
 
-                                    <div class="custom-control custom-checkbox">
-                                      <input class="custom-control-input" type="checkbox"  name="insert">
-                                      <label for="customCheckbox1" class="custom-control-label">insert only</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                      <input class="custom-control-input" type="checkbox"  name="delete">
-                                      <label for="customCheckbox1" class="custom-control-label">delete only</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox"  name="select">
-                                    <label for="customCheckbox1" class="custom-control-label">select only</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox"  name="alls">
-                                    <label for="customCheckbox1" class="custom-control-label">All preveleges</label>
-                                    </div>
-
-
-                                <div class="row">
-                                  <div class="col-8">
-                                <a href="">  <button type="submit" class="btn btn-primary btn-block"> Back </button></a>
-                                  </div>
-                                  <!-- /.col -->
-                                  <div class="col-4">
-                                    <button type="submit" class="btn btn-primary btn-block">ADD student</button>
-                                  </div>
-                                  <!-- /.col -->
-                                </div>
-                              </form>
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              <!-- <button type='button' class='btn btn-default' data-toggle='modal' data-target='#un' >
-                                 Next
-                               </button> -->
-                            </div>
-                          </div>
-                          <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Registration number">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="email" class="form-control" placeholder="Email address">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-envelope"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Course name">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Year/Semester">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-phone"></span>
                       </div>
-                <!-- /.modal-content -->
-              </div>  <!-- /.container-fluid -->
+                    </div>
+                  </div>
+
+
+                <div class="row">
+                  <div class="col-8">
+                <a href="">  <button type="submit" class="btn btn-primary btn-block"> Back </button></a>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block">ADD student</button>
+                  </div>
+                  <!-- /.col -->
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <!-- <button type='button' class='btn btn-default' data-toggle='modal' data-target='#un' >
+                 Next
+               </button> -->
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
+      </div>
+
+      <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit St info</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="" method="post">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="<?php echo"$fname"  ?>">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="<?php echo"$reg"  ?>">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="email" class="form-control" placeholder="<?php echo"$mail" ?>">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-envelope"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="<?php echo"$course"  ?>">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="<?php echo"$stage"  ?>">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-phone"></span>
+                      </div>
+                    </div>
+                  </div>
+
+
+                <div class="row">
+                  <div class="col-8">
+                <a href="">  <button type="submit" class="btn btn-primary btn-block"> Back </button></a>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block">UPDATE</button>
+                  </div>
+                  <!-- /.col -->
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
@@ -333,24 +389,7 @@ $user=$_SESSION['user'];
 <!-- page script -->
 <script>
 
-  $(function () {
-    $('.delete_movie').click(function(){
-		_conf('Are you sure to delete this data?','delete_movie' , [$(this).attr('id')])
-	})
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
+
 </script>
 </body>
 </html>

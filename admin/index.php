@@ -2,8 +2,12 @@
 require('connect.php');
 
 session_start();
-$user=$_SESSION['user'];
 
+if (isset($_SESSION['user'])) {
+  $user=$_SESSION['user'];
+}else {
+  header('location:login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -185,7 +189,9 @@ $user=$_SESSION['user'];
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-        <!-- /.col -->
+          <div class="col-sm-6">
+            <h1 class="m-0">Welcome <?php echo"$user";?></h1>
+          </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>

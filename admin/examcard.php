@@ -82,7 +82,7 @@ $user=$_SESSION['user'];
                  </a>
                  <ul class="nav nav-treeview">
                <li class="nav-item">
-                     <a href="data.php" class="nav-link">
+                     <a href="#" class="nav-link">
                        <i class="far fa-circle nav-icon"></i>
                        <p>All students</p>
                      </a>
@@ -118,22 +118,7 @@ $user=$_SESSION['user'];
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Welcome <?php echo"$user";?></h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard </li>
-              <li class="breadcrumb-item active">Generalised examcard</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -158,7 +143,7 @@ $user=$_SESSION['user'];
                     <th>UNIT CODE</th>
                     <th>UNIT</th>
                       <th>STAGE</th>
-
+                     <th>ACTION</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -185,7 +170,15 @@ $strSQL= "SELECT * from examcard ";
                     <td>$unit</td>
                     <td>$course</td>
                     <td>$stage</td>
+                      <td> <button type='button' class='btn btn-warning dropdown-toggle' data-toggle='dropdown'>Action</button>
+                      <ul class='dropdown-menu'>
+                        <li class='dropdown-item'>  <button type='button' class='btn btn-default' data-toggle='modal' data-target='#modal-lg' id=".$reg.">
+                            update info
+                          </button></li>
 
+                        <li class='dropdown-item delete_movie'><a href='edit.php?id=".$reg."'><button type='button' class='btn btn-default'>Delete</button></a></li>
+                      </ul>
+                       </div></td>
 
                   </tr>
                   ";
@@ -201,6 +194,7 @@ $strSQL= "SELECT * from examcard ";
                     <th>UNIT</th>
                     <th>STAGE</th>
 
+                    <th>ACTION</th>
                   </tr>
                   </tfoot>
                 </table>
