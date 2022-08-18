@@ -11,13 +11,12 @@ $_SESSION['user']=$user;
 
 if($user == 'admin' && $pass == 'root'){
   
-    header('location:index3.php');
+    header('location:../index3.php');
     
     
     }
     else{
-        echo 'Invalid Details';
-        session_destroy();
+       header('location:../../index.php?false');
     }
 
 ?>

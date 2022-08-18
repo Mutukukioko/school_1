@@ -18,11 +18,11 @@ if (!isset($_SESSION['user'])) {
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Page ICON -->
     <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
 </head>
@@ -55,7 +55,7 @@ if (!isset($_SESSION['user'])) {
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Students name</a>
@@ -69,7 +69,7 @@ if (!isset($_SESSION['user'])) {
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item ">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard 
@@ -85,16 +85,16 @@ if (!isset($_SESSION['user'])) {
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.php" class="nav-link ">
+                <a href=" " class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard</p>
+                  <p>Dashboard </p>
                 </a>
               </li>
             </ul>
           </li>
         </li>
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link active" >
+          <a href="#" class="nav-link active">
             <i class="nav-icon fas fa-book"></i>
             <p>
               Academics
@@ -104,7 +104,7 @@ if (!isset($_SESSION['user'])) {
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="./fees.php" class="nav-link">
+              <a href="" class="nav-link active">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Fees statement </p>
               </a>
@@ -122,7 +122,7 @@ if (!isset($_SESSION['user'])) {
               </a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link active">
+              <a href=" ./examcard.php" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Download Examcard </p>
               </a>
@@ -192,17 +192,17 @@ if (!isset($_SESSION['user'])) {
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+<script src="../dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="../plugins/chart.js/Chart.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard3.js"></script>
+<script src="../dist/js/pages/dashboard3.js"></script>
 </body>
 </html>
