@@ -15,10 +15,11 @@ if (isset($_SESSION['user'])) {
  <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
 </head>
 <body>
-<form action = "./logins.php" method ="Post" class ="form">
+<form action = "./user/action/logins.php" method ="Post" class ="form">
 <div>
  
     <h1 class="h1"> Login </h1>
+    <span style="color:red;"><?php if (isset($_GET['false'])){  echo" invalid username or password.";  }  ?></span>
 </div>
 <div class="form-group">
    
