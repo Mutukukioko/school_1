@@ -23,13 +23,13 @@ if (!isset($_SESSION['user'])) {
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <style>
+    <!-- Page ICON -->
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
+    <style>
     p{
       color:azure;
     }
   </style>
-    <!-- Page ICON -->
-    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
 </head>
 
 <body class="hold-transition sidebar-mini">
