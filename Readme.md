@@ -1,0 +1,1 @@
+The project is geared to exploring basic web devolpment.
